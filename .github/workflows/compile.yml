@@ -27,15 +27,6 @@ jobs:
       #     boost_version: 1.71.0
       #   if: runner.os == 'Windows'
 
-      - name: Get specific version of CMake, Ninja
-        uses: lukka/get-cmake@v3.22.2
-
-      - name: Clone code
-        run: |
-          git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/scientific_computing
-          mkdir build
-          cd build
-          cmake ../scientific_computing/ssc
 
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
@@ -68,6 +59,16 @@ jobs:
           brew install eigen
         shell: bash
         if: runner.os == 'macOS'
+
+      - name: Get specific version of CMake, Ninja
+        uses: lukka/get-cmake@v3.22.2
+
+      - name: Clone code
+        run: |
+          git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/scientific_computing
+          mkdir build
+          cd build
+          cmake -Wno-dev ../scientific_computing/ssc
 
       - name: Checkout repository and submodules
         uses: actions/checkout@v2

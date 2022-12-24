@@ -29,6 +29,11 @@ jobs:
       - name: Get specific version of CMake, Ninja
         uses: lukka/get-cmake@v3.22.2
 
+      - name: Clone code
+        run: |
+          git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/scientific_computing
+          cmake scientific_computing
+
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:

@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        python: [38, 39]
+        python: [39]
 
     steps:
       # - name: Install boost
@@ -25,6 +25,9 @@ jobs:
       #   with:
       #     boost_version: 1.71.0
       #   if: runner.os == 'Windows'
+
+      - name: Get specific version of CMake, Ninja
+        uses: lukka/get-cmake@v3.22.2
 
       - name: Set up conda environment
         uses: conda-incubator/setup-miniconda@v2

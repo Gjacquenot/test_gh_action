@@ -73,7 +73,7 @@ jobs:
 
       - name: Clone code
         run: |
-          git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/scientific_computing
+          git clone --recursive https://gitlab.com/GuillaumeJacquenot/scientific_computing
           mkdir build
           cd build
           cmake -Wno-dev ../scientific_computing/ssc

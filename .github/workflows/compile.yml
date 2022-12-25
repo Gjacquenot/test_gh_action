@@ -38,11 +38,18 @@ jobs:
 
       - name: Install libraries for Windows
         run: |
-          conda install -c conda-forge boost
+          # conda install -c conda-forge boost
           conda install -c conda-forge eigen
         shell: pwsh
         if: runner.os == 'Windows'
-
+        
+      - name: Install boost
+        uses: MarkusJx/install-boost@v2.4.3
+        id: install-boost
+        with:
+          link: static
+        if: runner.os == 'Windows'
+        
       - name: Install libraries for Linux
         run: |
           conda install -c conda-forge boost
@@ -68,8 +75,10 @@ jobs:
           git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/scientific_computing
           mkdir build
           cd build
-          cmake -Wno-dev -D BOOST_ROOT:PATH=C:/Miniconda3/envs/conda-env/Library/lib/cmake/boost_system-1.80.0 ../scientific_computing/ssc
-
+          cmake -Wno-dev ../scientific_computing/ssc
+        env:
+          BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
+      
       - name: Checkout repository and submodules
         uses: actions/checkout@v2
         with:

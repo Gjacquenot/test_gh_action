@@ -47,7 +47,7 @@ jobs:
         uses: MarkusJx/install-boost@v2.4.3
         id: install-boost
         with:
-          boost_version: 1.80.0
+          boost_version: 1.70.0
           link: static
         if: runner.os == 'Windows'
         

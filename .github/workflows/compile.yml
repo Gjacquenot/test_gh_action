@@ -68,7 +68,7 @@ jobs:
           git clone --recursive https://gitlab.com/sirehna_naval_group/sirehna/scientific_computing
           mkdir build
           cd build
-          cmake -Wno-dev ../scientific_computing/ssc
+          cmake -Wno-dev -D BOOST_ROOT:PATH=C:/Miniconda3/envs/conda-env/Library/lib/cmake/boost_system-1.80.0 ../scientific_computing/ssc
 
       - name: Checkout repository and submodules
         uses: actions/checkout@v2

@@ -78,7 +78,7 @@ jobs:
           git clone --recursive https://gitlab.com/GuillaumeJacquenot/scientific_computing
           mkdir build
           cd build
-          cmake -Wno-dev -D CMAKE_BUILD_TYPE=Release ../scientific_computing/ssc
+          cmake -Wno-dev -D CMAKE_BUILD_TYPE=Release -DCREATE_INDIVIDUAL_LIBRARIES:BOOL=OFF ../scientific_computing/ssc
           cmake --build .
         env:
           BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}

@@ -79,7 +79,7 @@ jobs:
           mkdir build
           cd build
           cmake -Wno-dev -D CMAKE_BUILD_TYPE=Release -DCREATE_INDIVIDUAL_LIBRARIES:BOOL=OFF ../scientific_computing/ssc
-          cmake --build --config Release .
+          cmake --build . --config Release
         env:
           BOOST_ROOT: ${{ steps.install-boost.outputs.BOOST_ROOT }}
       
